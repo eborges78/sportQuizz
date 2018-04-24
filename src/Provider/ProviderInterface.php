@@ -11,5 +11,5 @@ namespace App\Provider;
 
 interface ProviderInterface
 {
-
+    public function getAllCompetitions(): array;
 }

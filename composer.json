@@ -7,7 +7,7 @@
         "aws/aws-sdk-php-symfony": "^2.0",
         "php-http/httplug-pack": "^1.1",
         "sensio/framework-extra-bundle": "^5.1",
-        "symfony/console": "^3.4",
+        "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
         "symfony/lts": "^4.0-dev",
