@@ -1,8 +1,8 @@
 aws:
-    version: latest
-    region: eu-west-3
+    version: "%env(AWS_VERSION)%"
+    region: "%env(AWS_REGION)%"
     credentials:
         key: "%env(AWS_KEY)%"
         secret: "%env(AWS_SECRET)%"
     DynamoDb:
-        region: eu-west-3
+        region: "%env(AWS_REGION)%"
