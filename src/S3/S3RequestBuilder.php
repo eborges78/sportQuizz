@@ -1,16 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: manu
- * Date: 24/04/2018
- * Time: 23:14
+ * Emmanuel BORGES
+ * contact@eborges.fr
  */
-
 namespace App\S3;
 
 class S3RequestBuilder
 {
     private $_builder = [];
+    private $_map = [];
     private $_table = '';
 
     /**
@@ -25,17 +23,14 @@ class S3RequestBuilder
     }
 
     /**
+     * @param string $mapKey
      * @param string $key
-     * @param array $values
+     * @param string $value
      * @return S3RequestBuilder
      */
-    public function addItemMap(string $key, array $values): self
+    public function addItemMap(string $mapKey, string $key, string $value): self
     {
-        $tmp = [];
-        foreach ($values as $k => $value) {
-            $tmp[$k] = ['S' => $value];
-        }
-        $this->_builder[$key] = ['M' => $tmp];
+        $this->_map[$mapKey][$key] = $value;
         return $this;
     }
 
@@ -56,6 +51,16 @@ class S3RequestBuilder
         $this->_builder['lastUpdate'] = [
             'S' => (new \DateTime())->format('c')
         ];
+
+        foreach ($this->_map as $key => $values) {
+            $tmp = [];
+            foreach ($values as $k => $v) {
+                $tmp[$k] = ['S' => $v];
+            }
+            $this->_builder[$key] = [
+                'M' => $tmp
+            ];
+        }
         $args = [
             'TableName' => $this->_table,
             'Item' => $this->_builder

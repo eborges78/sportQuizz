@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: manu
- * Date: 24/04/2018
- * Time: 20:16
+ * Emmanuel BORGES
+ * contact@eborges.fr
  */
 
 namespace App\Exception;
